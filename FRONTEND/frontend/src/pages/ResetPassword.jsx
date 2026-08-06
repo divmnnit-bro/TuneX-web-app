@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate, useSearchParams, Link } from 'react-router-dom'
 import axios from 'axios'
-import api from '../utils/axios'
+import api from '../api/axios'
 
 export default function ResetPassword() {
   const [searchParams] = useSearchParams()

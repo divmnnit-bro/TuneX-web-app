@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import api from '../utils/axios'
+import api from '../api/axios'
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState('')
