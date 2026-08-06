@@ -1,0 +1,16 @@
+1xx-informational
+2xx-Success
+4xx-Client Error
+
+100 = continue
+102 = processing
+200 = ok
+201 = created
+202 = accepted
+307 = temporary redirect
+308 = permanent redirect
+400 = bad request
+401 = unauthorized
+403 = payment required
+404 = not found
+500 = internal server error
