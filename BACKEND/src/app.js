@@ -5,7 +5,7 @@ import cookieParser from 'cookie-parser';
 app.use(CORS({
     // allowing the frontend to access the backend, we need to set the origin to the frontend url
      // allowing the frontend to send cookies to the backend, we need to set the credentials to true
-    origin: https://tune-x-web-app.vercel.app,
+    origin: "https://tune-x-web-app.vercel.app",
     credentials:true
 }));
 
@@ -44,7 +44,7 @@ app.use("/api/v1/likes",likeRouter);
 app.use("/api/v1/playlist",playlistRouter);
 app.use("/api/v1/subscription",subscriptionRouter);
 app.use("/api/v1/agent", agentRouter);
-app.use('/api/auth', authRoutes);
+app.use('/api/v1/auth', authRoutes);
 
 
 export  { app };
