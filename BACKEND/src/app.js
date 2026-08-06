@@ -5,7 +5,7 @@ import cookieParser from 'cookie-parser';
 app.use(CORS({
     // allowing the frontend to access the backend, we need to set the origin to the frontend url
      // allowing the frontend to send cookies to the backend, we need to set the credentials to true
-    origin: process.env.CORS_ORIGIN,
+    origin: https://tune-x-web-app.vercel.app,
     credentials:true
 }));
 
