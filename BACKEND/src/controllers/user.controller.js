@@ -129,14 +129,14 @@ const loginUser = asyncHandler( async (req,res) => {
    const accessTokenOptions = {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        sameSite: "lax",
+        sameSite: "none",
         maxAge: 24 * 60 * 60 * 1000, // 1 day — match your ACCESS_TOKEN_EXPIRES_IN
     };
 
     const refreshTokenOptions = {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        sameSite: "lax",
+        sameSite: "none",
         maxAge: 10 * 24 * 60 * 60 * 1000, // 10 days — match your REFRESH_TOKEN_EXPIRES_IN
     };
 
@@ -163,10 +163,11 @@ const logOutUser = asyncHandler( async (req,res) => {
     );
 
     // now clear the cookies on the client browser
-    const options = {
-        httpOnly:true,
-        secure:true
-    };
+   const options = {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",     
+};
 
     return res.status(200)
     .clearCookie("accessToken",options)
@@ -199,10 +200,11 @@ const refreshaccessToken = asyncHandler( async (req,res) => {
     
     const {accessToken,newRefreshToken} = await GenerateAccessAndRefreshToken(user._id);
 
-    const options = {
-        httpOnly:true,
-        secure:true
-    };
+   const options = {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",      
+};
 
     return res
     .status(200)
