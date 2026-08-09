@@ -117,7 +117,7 @@ const getVideobyId = asyncHandler( async (req,res) => {
         video = await Video.findByIdAndUpdate(
             videoId,
             {
-                $inc:{views:0.5}
+                $inc:{views:1}
             },
             {
                 new:true
@@ -133,7 +133,8 @@ const getVideobyId = asyncHandler( async (req,res) => {
     res.cookie("viewedVideos", JSON.stringify(viewedVideos), {
         httpOnly: true,
         maxAge: 24 * 60 * 60 * 1000,
-        sameSite: "lax"
+        sameSite: "none",
+        secure: "true"
     });
 
     let isSubscribed = false;
