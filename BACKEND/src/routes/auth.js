@@ -43,7 +43,7 @@ router.post('/reset-password', async (req, res) => {
     const { token, email, newPassword } = req.body;
 
     const user = await User.findOne({ email });
-    if (!user) return res.status(400).json({ error: 'Invalid or expired token' });
+    if (!user) return res.status(400).json({ error: 'User with this EMAIL doesnt Exist' });
 
     const tokenHash = crypto.createHash('sha256').update(token).digest('hex');
     const resetRecord = await PasswordResetToken.findOne({
