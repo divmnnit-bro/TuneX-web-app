@@ -44,11 +44,15 @@ export default function Register() {
       await registerUser(formData)
       navigate('/login')
     } catch (err) {
-      setError(err.response?.data?.message || 'Registration failed')
-    } finally {
-      setSubmitting(false)
-    }
+  if (err.response?.status === 409) {
+    setError('A user with that username or email already exists')
+  } else {
+
+    setError(err.response?.data?.message || 'Registration failed')
   }
+} finally {
+  setSubmitting(false)
+}
 
   const inputClass =
     'w-full bg-white/[0.04] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-purple-400/40 focus:bg-white/[0.06] transition-all'
