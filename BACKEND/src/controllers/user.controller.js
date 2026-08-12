@@ -198,7 +198,7 @@ const refreshaccessToken = asyncHandler( async (req,res) => {
 
     // if not, then we have to generate new access token to keep alive the login session
     
-    const {accessToken,newRefreshToken} = await GenerateAccessAndRefreshToken(user._id);
+    const {accessToken,refreshToken:newRefreshToken} = await GenerateAccessAndRefreshToken(user._id);
 
    const options = {
     httpOnly: true,
