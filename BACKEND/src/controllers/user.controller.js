@@ -129,14 +129,14 @@ const loginUser = asyncHandler( async (req,res) => {
    const accessTokenOptions = {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        sameSite: "none",
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
         maxAge: 24 * 60 * 60 * 1000, // 1 day — match your ACCESS_TOKEN_EXPIRES_IN
     };
 
     const refreshTokenOptions = {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        sameSite: "none",
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
         maxAge: 10 * 24 * 60 * 60 * 1000, // 10 days — match your REFRESH_TOKEN_EXPIRES_IN
     };
 
